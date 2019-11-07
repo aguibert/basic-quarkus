@@ -1,7 +1,7 @@
 buildscript {
     dependencies {
-        //classpath "io.quarkus:quarkus-gradle-plugin:0.27.0"
-        classpath "io.quarkus:quarkus-gradle-plugin:999-SNAPSHOT"
+        classpath "io.quarkus:quarkus-gradle-plugin:0.27.0"
+        //classpath "io.quarkus:quarkus-gradle-plugin:999-SNAPSHOT"
     }
     repositories {
         mavenCentral()
@@ -21,11 +21,9 @@ repositories {
 }
 
 dependencies { 
-    //implementation enforcedPlatform('io.quarkus:quarkus-bom:0.27.0')
-    implementation enforcedPlatform('io.quarkus:quarkus-bom:999-SNAPSHOT')
+    implementation enforcedPlatform('io.quarkus:quarkus-bom:0.27.0')
+    //implementation enforcedPlatform('io.quarkus:quarkus-bom:999-SNAPSHOT')
     implementation 'io.quarkus:quarkus-resteasy'
-    implementation 'io.quarkus:quarkus-flyway'
-    implementation 'io.quarkus:quarkus-jdbc-postgresql'
     testCompile group: 'io.quarkus', name: 'quarkus-junit5'
     testCompile group: 'io.rest-assured', name: 'rest-assured', version: '3.3.0'
 }
