@@ -3,6 +3,7 @@ echo "Starting postgresql database with:"
 echo "    user=quark"
 echo "    pass=quark"
 echo "  dbname=quark_db"
+echo "    port=5432"
 docker run --ulimit memlock=-1:-1 -it --rm=true --memory-swappiness=0 \
            --name postgres-quarkus \
            -e POSTGRES_USER=quark \
