@@ -1,11 +1,9 @@
 buildscript {
-    dependencies {
-        classpath "io.quarkus:quarkus-gradle-plugin:1.0.0.CR1"
-        //classpath "io.quarkus:quarkus-gradle-plugin:999-SNAPSHOT"
-    }
     repositories {
-        mavenCentral()
         mavenLocal()
+    }
+    dependencies {
+        classpath "io.quarkus:quarkus-gradle-plugin:${quarkusPluginVersion}"
     }
 }
 
@@ -20,12 +18,27 @@ repositories {
     mavenLocal()
 }
 
-dependencies { 
-    implementation enforcedPlatform('io.quarkus:quarkus-bom:1.0.0.CR1')
-    //implementation enforcedPlatform('io.quarkus:quarkus-bom:999-SNAPSHOT')
+dependencies {
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
     implementation 'io.quarkus:quarkus-resteasy'
-    testCompile group: 'io.quarkus', name: 'quarkus-junit5'
-    testCompile group: 'io.rest-assured', name: 'rest-assured', version: '3.3.0'
+
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.rest-assured:rest-assured'
+
+    nativeTestImplementation 'io.quarkus:quarkus-junit5'
+    nativeTestImplementation 'io.rest-assured:rest-assured'
+}
+
+group 'org.acme'
+version '1.0.0-SNAPSHOT'
+
+compileJava {
+    options.compilerArgs << '-parameters'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 test {
